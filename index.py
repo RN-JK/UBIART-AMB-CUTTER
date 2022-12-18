@@ -7,10 +7,10 @@ codenamelow=codename.lower()
 mtrack=json.load(open('input/'+codenamelow+'_musictrack.tpl.ckd'))
 startbeat=mtrack['COMPONENTS'][0]['trackData']['structure']['startBeat']
 startbeat=abs(startbeat)
-marker=mtrack['COMPONENTS'][0]['trackData']['structure']['markers'][startbeat]
-timestamp=marker/48+setting['offset']
+marker=mtrack['COMPONENTS'][0]['trackData']['structure']['markers'][startbeat+setting['offset']['beat']]
+timestamp=marker/48+setting['offset']['millisecond']
 print('Making full audio of '+codename)
-os.system('ffmpeg -y -ss "'+str(timestamp)+'ms" -nostats -loglevel 0 -i input/'+codename+'.'+setting['extension']+' output/'+codename+'.'+setting['extension'])
+os.system('ffmpeg -y -ss "'+str(timestamp)+'ms" -nostats -loglevel 0 -i input/'+codename+'.'+setting['extension']+' output/'+codename.lower()+'.'+setting['extension'])
 
 try:
     cine=json.load(open('input/'+codenamelow+'_mainsequence.tape.ckd'))
