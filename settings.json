@@ -1,5 +1,8 @@
 {
 	"mapName": "",
 	"extension": "ogg",
-	"offset": 85
+	"offset": {
+		"millisecond": 85,
+		"beat": 0
+	}
 }
